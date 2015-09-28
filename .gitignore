@@ -11,16 +11,3 @@
 /log/*
 !/log/.keep
 /tmp
-#ignore this file when git commit 
-
-    .ruby-version
-
-    .ruby-gemset
-
-    tmp/
-
-    public/
-
-    log/
-
-    config/database.yml
