@@ -85,7 +85,10 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: rub-blog_production
-  username: rub-blog
-  password: <%= ENV['RUB-BLOG_DATABASE_PASSWORD'] %>
+  # <<: *default
+  database: d8m0j5o18lnej3
+  username: ltsgrsbmwfutlb
+  host: ec2-54-204-7-145.compute-1.amazonaws.com
+  password: SzaWSnAR52LXqBlhmLIBtxYteJ
+  port: 5432
+  adapter: postgresql
