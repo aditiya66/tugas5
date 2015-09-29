@@ -87,5 +87,5 @@ test:
 production:
   <<: *default
   database: rub-blog_production
-  username: rub-blog
-  password: <%= ENV['RUB-BLOG_DATABASE_PASSWORD'] %>
+  username: postgres
+  password: destrak123
