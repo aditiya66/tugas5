@@ -85,7 +85,7 @@ Rails.application.configure do
 
       :address              => "smtp.gmail.com",
 
-      :port                 => 465,
+      :port                 => 587,
 
       :domain               => "gmail.com",
 

@@ -4,15 +4,15 @@ require "action_mailer"
 
     ActionMailer::Base.smtp_settings = {
 
-      :address              => "smtp.gmail.com",
+       :address              => "smtp.mailgun.org",
 
       :port                 => 465,
 
-      :domain               => '@gmail.com',
+      :domain               => "sandboxb081658465044b45a91bc6e0d614e797.mailgun.org",
 
-      :user_name            => 'aditiyanugraha56@gmail.com',
+      :user_name            => "postmaster@sandboxb081658465044b45a91bc6e0d614e797.mailgun.org",
 
-      :password             => 'destrak123',
+      :password             => "3e585a983bf8c657816e1c9f611de0fb",
 
       :authentication       => "plain",
 
