@@ -13,7 +13,9 @@
 
 
 
-
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
 
 <div class="container clearfix">
 
@@ -72,8 +74,10 @@
 <%= link_to "Excel", articles_path(format: "xls") %>|
  
 <!--   <%= link_to "Excelx", articles_path(format: "xlsx") %>|
- -->  <%= link_to "Pdf" ,articles_path(format: "pdf")%>
-</p>
+ -->  
+
+<!--  <%= link_to "Pdf" ,articles_path(format: "pdf")%>
+ --></p>
 
 <%= paginate @articles  %>
 <%= page_entries_info @articles %>

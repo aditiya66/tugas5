@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data Article.to_csv }
-      format.pdf{send_data Article.to_csv}
+      # format.pdf{send_data Article.to_csv}
          # format.xlsx 
 
    format.xls
