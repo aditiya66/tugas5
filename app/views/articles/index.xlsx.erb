@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Title</Data></Cell>
+        <Cell><Data ss:Type="String">Content</Data></Cell>
+        <Cell><Data ss:Type="date">Created At</Data></Cell>
+        <Cell><Data ss:Type="date">Updated At</Data></Cell>
+        <Cell><Data ss:Type="String">Status</Data></Cell>
+
+
+
+      </Row>
+    <% @articles.each do |article| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= article.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= article.title %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= article.content %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= article.created_at %></Data></Cell>
+                <Cell><Data ss:Type="String"><%= article.updated_at %></Data></Cell>
+                        <Cell><Data ss:Type="String"><%= article.status %></Data></Cell>
+
+
+
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+    <Worksheet ss:Name="Sheet2">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Article ID</Data></Cell>
+        <Cell><Data ss:Type="String">Content</Data></Cell>
+      </Row>
+    <% @comments.each do |comment| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= comment.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= comment.article_id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= comment.content %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+
+
+
+</Workbook>
+

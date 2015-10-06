@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
 	  #name relation must singular
+	   acts_as_xlsx
  before_create :default_status
 
         belongs_to :article

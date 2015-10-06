@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require custom
 //= require turbolinks
 //= require bootstrap/bootstrap
 //= require bootstrap/jquery-1-11-1

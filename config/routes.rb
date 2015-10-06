@@ -71,10 +71,24 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
      root :to => "articles#index"
-resources :articles
+     resources :articles
 resources :comments
 get"sign_up" => "user#new", :as => "sign_up"
 resources :users
 resources :sessions
+resources :articles
+resources :articles do
+    collection { post :import }
+  end
+resources :articles do
+    collection { get :export }
+  end
+
+
+
+# concern :paginatable do
+#   get '(page/:page)', :action => :index, :on => :collection, :as => ''
+# end
+# resources :articles, :concerns => :paginatable
 
 end

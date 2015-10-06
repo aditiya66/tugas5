@@ -1,43 +1,94 @@
- <h4>
+<nav class="navbar navbar-fixed-top navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Tugas 5</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li ><%= link_to 'Import' , article_path('new')%></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-<% if !current_user %>
 
-<%= link_to 'Log-in guys', new_session_path %>
 
-<% else %>
 
-Hello <%= current_user.username %>
 
-<%= link_to 'Log-Out', session_path(current_user.id), method: "DELETE" %>
-
-<% end %>
-
-</h4>
+<div class="container clearfix">
 
 
 
 
 <% @articles.each do |article| %>
+<div class="col-md-3">
+<div class="panel panel-default">
+	
 
-<h3><%= article.title %></h3>
 
+<div class="panel-body"><p>
+	<h3><%= article.title %></h3>
+<hr>
+ <h4><%= article.content.truncate(10)%> <%= link_to 'read more', article_path(article.id) %>
+</h4>
 
-<p>
- <%= article.content.truncate(20) %>
-
-<%= link_to 'read more', article_path(article.id) %>
 </p>
+<h5>status : <%= article.status %></h5>
 
-<h4>status : <%= article.status %></h4>
+</div>
+
+
+	<div class="panel-footer">
+		
+
  <p>
 
-<span><%= link_to 'edit', edit_article_path(article.id) %><span>
+<span><%= link_to 'edit', edit_article_path(article.id) %></span>
 
 <span>|</span>
 
 <span> <%= link_to 'delete', article_path(article.id), method: "DELETE", data:{confirm: 'Delete this data ? '} %><span>
 </p>
 
-<hr/>
+	</div>
+
+
+
+
+
+</div>
+</div>
+
+
 
 <% end %>
+
+
+</div>
+
+<p>
+  Download:
+  <%= link_to "CSV", articles_path(format: "csv") %> |
+<%= link_to "Excel", articles_path(format: "xls") %>|
+ 
+<!--   <%= link_to "Excelx", articles_path(format: "xlsx") %>|
+ -->  <%= link_to "Pdf" ,articles_path(format: "pdf")%>
+</p>
+
+<%= paginate @articles  %>
+<%= page_entries_info @articles %>
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
