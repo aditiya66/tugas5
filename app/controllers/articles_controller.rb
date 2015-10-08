@@ -1,12 +1,5 @@
 class ArticlesController < ApplicationController
-   # before_filter :change_format
 
-
-
-
-
-
-    # @paginatable_array = Kaminari.paginate_array(my_array_object).page(params[:page]).per(10)
   def index
 
   	@articles=Article.all.status_active.order(:created_at).page(params[:page]).per(5)
@@ -15,7 +8,7 @@ class ArticlesController < ApplicationController
   respond_to do |format|
       format.html
       format.csv { send_data Article.to_csv }
-      format.xls
+      format.xls 
 
     end
 end
@@ -30,6 +23,13 @@ end
     @article = Article.find_by_id(params[:id])
     @comments = @article.comments.order("id desc")
     @comment = Comment.new
+  respond_to do |format|
+      format.html
+      format.csv { send_data Article.to_csv }
+      format.xls
+    end
+
+
   end
 
   

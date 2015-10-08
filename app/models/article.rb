@@ -27,7 +27,7 @@ class Article < ActiveRecord::Base
 
 def self.import(file)
 
-accessible_attributes = ["id","title","content","status"]
+accessible_attributes = ["title","content","status"]
   spreadsheet = open_spreadsheet(file)
 
 
