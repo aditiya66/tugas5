@@ -1,77 +1,59 @@
-
-
-
-  <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
-
-<div class="container clearfix">
-
-
-
-
-<% @articles.each do |article| %>
-<div class="col-md-3">
-<div class="panel panel-default">
 	
+	
+	
+	<% if flash[:notice] %>
+	<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+	
+<h2 style="text-align: center;">Article</h2>
 
-
-<div class="panel-body"><p>
+	<div class="container-fluid clearfix">
+	<% @articles.each do |article| %>
+	<div class="col-md-3">
+	<div class="panel panel-default">
+	
+	
+	
+	<div class="panel-body"><p>
 	<h3><%= article.title %></h3>
-<hr>
- <h4><%= article.content.truncate(10)%> <%= link_to 'read more', article_path(article.id) %>
-</h4>
-
-</p>
-<h5>status : <%= article.status %></h5>
-
-</div>
-
-
-	<div class="panel-footer">
-		
-
- <p>
-
-<span><%= link_to 'edit', edit_article_path(article.id) %></span>
-
-<span>|</span>
-
-<span> <%= link_to 'delete', article_path(article.id), method: "DELETE", data:{confirm: 'Delete this data ? '} %><span>
-</p>
-
+	<hr>
+	<h4><%= article.content.truncate(10)%> <%= link_to 'read more', article_path(article.id) %>
+	</h4>
+	
+	</p>
 	</div>
 
+		
+				<div class="panel-footer">
+				<p>	
+				<span><%= link_to 'Edit', edit_article_path(article.id) %></span>
+				<span>|</span>	
+				<span> <%= link_to 'Delete', article_path(article.id), method: "DELETE", data:{confirm: 'Delete this data ? '} %><span>
+				</p>		
+				</div>
+				</div>
+				</div>
+				<% end %>
+				</div>
+				<p>
 
 
+				<div class="nav navbar-fixed-bottom">
+				<div class="row">
+				<div class="col-sm-2">Download:
+	<%= link_to "CSV", articles_path(format: "csv") %> |
+	<%= link_to "Excel", articles_path(format: "xls") %>|
+	</div>
+	<div class="col-sm-3">	
+	<%= page_entries_info @articles %>
+   </div>
+   <div class="col-sm-4">
+   		<%= paginate @articles  %>
+   </div>
 
 
 </div>
 </div>
-
-
-
-<% end %>
-
-
-</div>
-
-<p>
-  Download:
-  <%= link_to "CSV", articles_path(format: "csv") %> |
-<%= link_to "Excel", articles_path(format: "xls") %>|
- 
-<!--   <%= link_to "Excelx", articles_path(format: "xlsx") %>|
- -->  
-
-<!--  <%= link_to "Pdf" ,articles_path(format: "pdf")%>
- --></p>
-
-<%= paginate @articles  %>
-<%= page_entries_info @articles %>
-
-
-
 
 
 	

@@ -9,33 +9,16 @@ class ArticlesController < ApplicationController
     # @paginatable_array = Kaminari.paginate_array(my_array_object).page(params[:page]).per(10)
   def index
 
-
-
-
-
-  	@articles=Article.all.order(:created_at).page(params[:page]).per(5)
+  	@articles=Article.all.status_active.order(:created_at).page(params[:page]).per(5)
     @comments = Comment.all
-
-
-
-    respond_to do |format|
+  
+  respond_to do |format|
       format.html
       format.csv { send_data Article.to_csv }
-      # format.pdf{send_data Article.to_csv}
-         # format.xlsx 
-
-   format.xls
-   # format.xls { send_data Article.to_csv(col_sep: "\t") }
+      format.xls
 
     end
-    # @articles =Article.status_active
-
-
-
-
-
-
-  end
+end
 
 
  
@@ -44,7 +27,7 @@ class ArticlesController < ApplicationController
 
 
   def show
-   @article = Article.find_by_id(params[:id])
+    @article = Article.find_by_id(params[:id])
     @comments = @article.comments.order("id desc")
     @comment = Comment.new
   end
@@ -65,32 +48,22 @@ class ArticlesController < ApplicationController
 
   def create
     #  @article = Article.new(params_article)
-
     # if @article.save
-
     #     flash[:notice] = "Success Add Records"
-
     #     redirect_to action: 'index'
-
     # else
-
- # Article.import(params[:file])
- #  redirect_to root_url, notice: "Products imported."
-   
-
-
-
- # @article = Article.new(params[:article])
- #    if @article.save
- #      redirect_to root_url, notice: "Imported products successfully."
-    
- #    end
+    # Article.import(params[:file])
+    #  redirect_to root_url, notice: "Products imported."
+    # @article = Article.new(params[:article])
+    #    if @article.save
+    #      redirect_to root_url, notice: "Imported products successfully."
+    #    end
 
 
 
-
-@article_import = Article.new(params[:article_import])
-    if @article_import.save
+      
+      @article_import = Article.new(params[:article_import])
+      if @article_import.save
       redirect_to root_url, notice: "Imported products successfully."
     else
       render :new
@@ -113,12 +86,12 @@ class ArticlesController < ApplicationController
 
      def update
 
- @article = Article.find_by_id(params[:id])
-
- if @article.update(params_article)
-
+    @article = Article.find_by_id(params[:id])
+    
+    if @article.update(params_article)
+    
     flash[:notice] = "Success Update Records"
-
+    
     redirect_to action: 'index'
 
  else
@@ -139,22 +112,22 @@ end
 
  
  def destroy
-
-    @article = Article.find_by_id(params[:id])
-
-    if @article.destroy
-
+        
+        @article = Article.find_by_id(params[:id])
+        
+        if @article.destroy
+        
         flash[:notice] = "Success Delete a Records"
-
+        
         redirect_to action: 'index'
-
-    else
-
+        
+        else
+        
         flash[:error] = "fails delete a records"
-
+        
         redirect_to action: 'index'
-
-    end
+        
+        end
 
 end
 

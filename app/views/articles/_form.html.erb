@@ -1,21 +1,31 @@
- <%= form_for @comment, url: comments_path, remote: true do |f| %>
-
-        <%= f.hidden_field :article_id, value: @article.id %>
-
-        <% if current_user %>
-
+           
+  <%= form_for @comment, url: comments_path, remote: true do |f| %>
+            
+            <%= f.hidden_field :article_id, value: @article.id %>
+            
+            <% if current_user %>
+            
             <%= f.hidden_field :user_is, value: current_user.id %>
+            
+            <% end %>
+            
+            <br/>
 
-        <% end %>
+        <div class="form-group">
 
+        <div class="col-sm-8">
+        <%= f.text_area :content, cols: 20, rows: 5 ,:class => 'form-control'%>
+        </div>
         <br/>
-
-        <%= f.label :content %>
-
-        <%= f.text_area :content, cols: 20, rows: 10 %>
-
-        <br/>
-
-        <%= f.submit :submit %>
-
+        </div>
+        
+        
+        <div class="form-group">
+        <div class="col-offset-sm-2 col-sm-10">
+        
+        <%= f.submit :submit , :class => 'btn btn-default'%>
+        
+        
+        </div>
+        </div>
     <% end %>

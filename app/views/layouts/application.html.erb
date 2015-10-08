@@ -2,13 +2,34 @@
 <html>
 <head>
   <title>Tugas5</title>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+    <style type="text/css">
+
+
+body {
+
+	padding-top: 60px;
+	padding-bottom: 60px;
+}
+.pagination{
+
+margin: 0 auto;
+text-align: center;
+
+
+}
+
+
+  </style>
 </head>
-<body style="padding-top: 60px;">
+<body >
 <%= render 'shared/header'%>
 <%= yield %>
 
-</body>
+
+
+
 </html>
