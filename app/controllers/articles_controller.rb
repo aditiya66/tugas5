@@ -48,17 +48,7 @@ end
 
 
   def create
-    #  @article = Article.new(params_article)
-    # if @article.save
-    #     flash[:notice] = "Success Add Records"
-    #     redirect_to action: 'index'
-    # else
-    # Article.import(params[:file])
-    #  redirect_to root_url, notice: "Products imported."
-    # @article = Article.new(params[:article])
-    #    if @article.save
-    #      redirect_to root_url, notice: "Imported products successfully."
-    #    end
+
 
 
 
@@ -110,7 +100,7 @@ end
 
 def import
   
-valid_keys= ["title","content","status"]
+valid_keys= ["id","title","content","status"]
 
 total_row = 0
     spreadsheet = Import.open_spreadsheet(params[:file])
@@ -131,13 +121,10 @@ spreadsheet.default_sheet= spreadsheet.sheets.last
       spreadsheet.row(1).each { |row| header << row.downcase.tr(' ', '_') }
       (2..spreadsheet.last_row).each do |i|
         row = Hash[[header, spreadsheet.row(i)].transpose]
-          user_is=Article.all.select(:id)
-# accesible=["id","content"]
+   data=row.to_hash.slice(*valid_keys)
 
-    # comment= row.to_hash.slice(accesible)
-    # byebug
 
-               comment = Article.last.comments.create(row)
+               comment = Article.last.comments.create(data)
 
 
     @articles=Article.all.order(:created_at).page(params[:page]).per(5)
