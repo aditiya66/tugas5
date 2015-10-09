@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   def index
 
-    @articles=Article.all.order(:created_at).page(params[:page]).per(5)
+    @articles=Article.all.order(:created_at).page(params[:page]).per(8)
     @comments = Comment.all
 
     respond_to do |format|

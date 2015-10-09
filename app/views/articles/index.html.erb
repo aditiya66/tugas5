@@ -4,46 +4,41 @@
 	<% if flash[:notice] %>
 	<div class="notice"><%= flash[:notice] %></div>
 	<% end %>
+
+
+
+
+
+
+
 	
 <h2 style="text-align: center;">Article</h2>
 
 	<div class="container-fluid clearfix">
 	<% @articles.each do |article| %>
-	<div class="col-md-3">
-	<div class="panel panel-default">
-	
-	
-	
-	<div class="panel-body"><p>
-	<h3><%= article.title %></h3>
-	<hr>
-	<h4><%= article.content.truncate(10)%> <%= link_to 'read more', article_path(article.id) %>
-	</h4>
-	
+	<div class="col-sm-3 .hah">
+	<div class="box">
+	<h4><%= article.title %></h4>
+	<p><%= article.content%> 
 	</p>
-	</div>
+	<%= link_to 'View Detail', article_path(article.id) %>
+	
 
-		
-				<div class="panel-footer">
-				<p>	
+ 				<p>	
 				<span><%= link_to 'Edit', edit_article_path(article.id) %></span>
 				<span>|</span>	
 				<span> <%= link_to 'Delete', article_path(article.id), method: "DELETE", data:{confirm: 'Delete this data ? '} %><span>
 				</p>		
 				</div>
 				</div>
-				</div>
 				<% end %>
+				</p>
 				</div>
-				<p>
 
 
 				<div class="nav navbar-fixed-bottom">
 				<div class="row">
-				<!-- <div class="col-sm-2">Download:
-	<%= link_to "CSV", articles_path(format: "csv") %> |
-	<%= link_to "Excel", articles_path(format: "xls") %>|
-	</div> -->
+		
 	<div class="col-sm-3">	
 	<%= page_entries_info @articles %>
    </div>
