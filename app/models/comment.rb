@@ -15,4 +15,23 @@ class Comment < ActiveRecord::Base
 			self.status = "not active"
 			
 			end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end

@@ -9,7 +9,8 @@
   <Worksheet ss:Name="Sheet1">
     <Table>
       <Row>
-        <Cell><Data ss:Type="String">Title</Data></Cell>
+<!--         <Cell><Data ss:Type="String">ID</Data></Cell>
+ -->        <Cell><Data ss:Type="String">Title</Data></Cell>
         <Cell><Data ss:Type="String">Content</Data></Cell>
         <Cell><Data ss:Type="String">Created At</Data></Cell>
         <Cell><Data ss:Type="String">Updated At</Data></Cell>
@@ -19,6 +20,8 @@
 
       </Row>
       <Row>
+<!--               <Cell><Data ss:Type="String"><%= @article.id %></Data></Cell>
+ -->
         <Cell><Data ss:Type="String"><%= @article.title %></Data></Cell>
         <Cell><Data ss:Type="String"><%= @article.content %></Data></Cell>
         <Cell ><Data ss:Type="dateTime"><%= @article.created_at %></Data></Cell>
@@ -33,13 +36,13 @@
     <Worksheet ss:Name="Sheet2">
     <Table>
       <Row>
-        <Cell><Data ss:Type="String">ID</Data></Cell>
-        <Cell><Data ss:Type="String">Content</Data></Cell>
+<!--         <Cell><Data ss:Type="String">ID</Data></Cell>
+ -->        <Cell><Data ss:Type="String">Content</Data></Cell>
       </Row>
     <% @comments.each do |comment| %>
       <Row>
-        <Cell><Data ss:Type="Number"><%= comment.id %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= comment.content %></Data></Cell>
+<!--         <Cell><Data ss:Type="Number"><%= comment.id %></Data></Cell>
+ -->        <Cell><Data ss:Type="String"><%= comment.content %></Data></Cell>
       </Row>
     <% end %>
     </Table>

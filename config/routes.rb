@@ -84,7 +84,9 @@ resources :articles do
     collection { get :export }
   end
 
-
+resources :imports do
+    collection { post :import }
+  end
 
 # concern :paginatable do
 #   get '(page/:page)', :action => :index, :on => :collection, :as => ''

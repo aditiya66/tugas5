@@ -26,19 +26,26 @@ class Article < ActiveRecord::Base
 
 
 def self.import(file)
+  
+valid_keys= ["title","content","status"]
 
-accessible_attributes = ["title","content","status"]
-  spreadsheet = open_spreadsheet(file)
+total_row = 0
+    spreadsheet = open_spreadsheet(file)
 
+    spreadsheet.sheets.each_with_index do |sheet, index|
+      spreadsheet.default_sheet = spreadsheet.sheets[index]
+# byebug
+      header = Array.new
+      spreadsheet.row(1).each { |row| header << row.downcase.tr(' ', '_') }
+      (2..spreadsheet.last_row).each do |i|
+        row = Hash[[header, spreadsheet.row(i)].transpose]
+        data = find_by_id(row["id"]) || new
+    data.attributes = row.to_hash.slice(*valid_keys)
+    data.save!
 
-  header = Array.new
-spreadsheet.row(1).each { |row| header << row.downcase.tr(' ', '_') }
-  (2..spreadsheet.last_row).each do |i|
-    row = Hash[[header, spreadsheet.row(i)].transpose]
-    article = find_by_id(row["id"]) || new
-    article.attributes = row.to_hash.slice(*accessible_attributes)
-    article.save!
-  end
+      end
+
+end  
 end
 
   
@@ -58,34 +65,13 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   has_many :comments, dependent: :destroy
 
-        validates :title, presence: true, length: { minimum: 1 }
+  #       validates :title, presence: true, length: { minimum: 1 }
 
-        validates :content, presence: true, length: { minimum: 1 }
+  #       validates :content, presence: true, length: { minimum: 1 }
 
-        validates :status, presence: true
+  #       validates :status, presence: true
 
-        scope :status_active, -> {where(status: 'active')}
+  #       scope :status_active, -> {where(status: 'active')}
 end
